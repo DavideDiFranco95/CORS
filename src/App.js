@@ -1,12 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 const fetchApi = async () => {
   console.log("You have clicked the button!");
-  try{
-    const response = await fetch("http://localhost:8080/custom");
-    const text = await response.text();
-    console.log("Response: ", text)
-  }catch(e){
-    console.error(e);
-  }
+  let navigate = useNavigate();
+    const routeChange = () =>{
+      let path = "http://localhost:8080";
+      navigate(path);
 }
 
 function App() {
