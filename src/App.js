@@ -1,12 +1,16 @@
-import { useNavigate } from "react-router-dom";
-
 const fetchApi = async () => {
   console.log("You have clicked the button!");
-  let navigate = useNavigate();
-    const routeChange = () =>{
-      let path = "http://localhost:8080";
-      navigate(path);
-}
+  try {
+    const response = await fetch("http://localhost:8080/custom");
+    if (!response.ok) {
+      throw new Error("HTTP request failed");
+    }
+    const text = await response.text();
+    console.log("Response: ", text);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 function App() {
   return (
@@ -15,4 +19,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
